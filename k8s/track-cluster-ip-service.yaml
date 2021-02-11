@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: tracking-cluster-ip-service
+spec:
+  type: ClusterIP
+  selector:
+    component: tracking-web
+  ports:
+    - port: 80
+      targetPort: 80

@@ -1,0 +1,24 @@
+version: '3.4'
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - /var/www/track/public/app/vendor
+      - .:/var/www/track/public
+      - socket:/socket
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    volumes:
+      - .:/var/www/track/public
+      - socket:/socket
+    ports:
+      - "8000:80"
+    restart: always
+    depends_on:
+        - php
+volumes:
+  socket:

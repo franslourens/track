@@ -1,0 +1,101 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tracking-config
+data:
+ config: |
+  <?php
+    define("DB_HOST", ${DB_HOST});
+    define("DB_USER", ${DB_USER});
+    define("DB_PASS", ${DB_PASS});
+    define("DB_NAME", ${DB_NAME});
+    define("FRAMEWORK", "/var/www/track/public/app/");
+    define('APPROOT', dirname(dirname(__FILE__)));
+    define('URLROOT', 'https://tracking.franslouerns.co.za');
+    define('SITENAME', 'Track');
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: tracking-deployment
+spec: 
+  replicas: 1
+  selector: 
+    matchLabels: 
+      component: tracking-web
+  template: 
+    metadata: 
+      labels: 
+        component: tracking-web
+    spec:
+      volumes:
+        - name: code
+          emptyDir: {} 
+        - name: sock
+          emptyDir: {}
+        - name: config-volume
+          configMap:
+            name: tracking-config
+            items:
+            - key: config
+              path: env
+      initContainers:
+        - args:
+            - /bin/bash
+            - -c
+            - cp /etc/config/env /var/www/tracking/app/config/development.php
+          image: frans86/php-tracking
+          name: tracking
+          env:
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: postgreshost
+                  key: postgreshost
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgresuser
+                  key: postgresuser
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: postgresname
+                  key: postgresname
+            - name: DB_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: postgresspass
+                  key: postgresspass
+          volumeMounts:
+            - 
+              name: code
+              mountPath: /var/www
+            - name: config-volume
+              mountPath: /etc/config
+      containers: 
+        - 
+          image: frans86/nginx-tracking
+          name: nginx
+          imagePullPolicy: Always
+          ports: 
+            - 
+              containerPort: 80
+          volumeMounts:
+            - 
+              name: code
+              mountPath: /var/www
+            - 
+              name: sock
+              mountPath: /socket
+        - 
+        image: frans86/php-tracking
+          imagePullPolicy: Always
+          name: fpm
+          volumeMounts:
+            - 
+              name: code
+              mountPath: /var/www
+            - 
+              name: sock
+              mountPath: /socket
