@@ -148,8 +148,8 @@
     public function destroy($id) {
         $this->accepts("delete");
       
-        $person = Person::retrieveByPk($id);
-        
+        $person = $this->personModel::retrieveByPk($id);
+
         if(!$person->id) {
           echo json_encode(array("status" => "failed", "message" => "Could not find person"));
           exit;            
