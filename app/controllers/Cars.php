@@ -18,8 +18,8 @@
     
     public function show($id){
       $this->accepts("get");
-      
-      $data = $this->carModel::retrieveByPk($id);
+
+      $car = $this->carModel::retrieveByPk($id);
       echo json_encode($car->serialize());
       exit;
       

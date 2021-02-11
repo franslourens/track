@@ -172,10 +172,21 @@
         return false;
       }
     }
+
+    public function removeSymptoms() {
+      $this->db->query('DELETE FROM person_symptom WHERE person_id = :person_id');
+
+      $this->db->bind(':person_id', $this->id);
+
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }      
+    }
     
-    public function removeSymptom($symptomId)
-    {
-      $this->db->query('DELETE FROM person_symptom WHERE person_id = :person_id AND symptom_id = :symptom_id');
+    public function removeSymptom($symptomId) {
+      $this->db->query('UPDATE person_symptom SET showing = false WHERE person_id = :person_id AND symptom_id = :symptom_id');
 
       $this->db->bind(':person_id', $this->id);
       $this->db->bind(':symptom_id', $symptomId);
@@ -265,6 +276,8 @@
     }
     
     public function delete() {
+      $this->removeSymptoms();
+  
       $this->db->query('DELETE FROM person WHERE id = :id');
 
       $this->db->bind(':id', $this->id);

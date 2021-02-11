@@ -10,6 +10,9 @@
       if(file_exists(FRAMEWORK . 'controllers/'.ucwords($url[0]).'.php')){
         $this->currentController = ucwords($url[0]);
         unset($url[0]);
+      } else {
+        echo json_encode(array("status" => "failed", "message" => "No endpoint found"));
+        exit;     
       }
 
       require_once(FRAMEWORK . 'controllers/' . $this->currentController . '.php');
@@ -20,9 +23,15 @@
 
   
       if(isset($url[1])){
+        
         if(method_exists($this->currentController, $url[1])){
           $this->currentMethod = $url[1];
           unset($url[1]);
+        }
+        
+        if(!is_callable(array($this->currentController, $this->currentMethod))){
+          echo json_encode(array("status" => "failed", "message" => "No method found"));
+          exit;     
         }
       }
 

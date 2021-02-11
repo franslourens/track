@@ -71,9 +71,13 @@
     * @return json
     **/       
     public function symptoms($symptom_id) {
-        $this->accepts("post");
+        $this->accepts("put", "delete");
         
         $payload = $this->payload();
+
+        if(strtolower($_SERVER["REQUEST_METHOD"]) == "delete") {
+          return $this->removeSymptom($payload["person_id"], $symptom_id);
+        }
         
         try {
           $model = $this->personModel;
@@ -86,6 +90,20 @@
         
         echo json_encode($person->serialize());
         exit;
+    }
+    
+    private function removeSymptom($person_id, $symptom_id) {
+      try {
+        $model = $this->personModel;
+        $person = $this->personModel::retrieveByPk($person_id);
+        $person->removeSymptom($symptom_id);
+      } catch (Exception $e) {
+        echo json_encode(array("status" => "failed", "message" => $e->getMessage()));
+        exit;         
+      }
+      
+      echo json_encode($person->serialize());
+      exit;      
     }
 
     public function save($id = null) {
