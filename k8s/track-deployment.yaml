@@ -51,7 +51,7 @@ spec:
               && mkdir /var/www/track/public/app/config/
               && cp /etc/config/env /var/www/track/public/app/config/development.php 
               && (chown -R app:www-data /var/www/)
-          image: frans86/php-tracking:v3
+          image: frans86/php-tracking
           name: tracking
           env:
             - name: DB_HOST

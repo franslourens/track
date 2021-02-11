@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "54484af7-1d6b-414d-98e3-2a250e04ed96",
-		"name": "Track",
+		"name": "Tracker",
 		"description": "Tracking people and their cars that come for covid testing and storing their results.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -132,6 +132,70 @@
 					"path": [
 						"persons",
 						"save",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://tracking.franslourens.co.za/persons/symptoms/1",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"person_id\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tracking.franslourens.co.za/persons/symptoms/1",
+					"protocol": "https",
+					"host": [
+						"tracking",
+						"franslourens",
+						"co",
+						"za"
+					],
+					"path": [
+						"persons",
+						"symptoms",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://tracking.franslourens.co.za/persons/symptoms/1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"person_id\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tracking.franslourens.co.za/persons/symptoms/1",
+					"protocol": "https",
+					"host": [
+						"tracking",
+						"franslourens",
+						"co",
+						"za"
+					],
+					"path": [
+						"persons",
+						"symptoms",
 						"1"
 					]
 				}
