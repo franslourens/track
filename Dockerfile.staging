@@ -37,8 +37,8 @@ RUN docker-php-ext-install pdo \
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-WORKDIR  /var/www/track/public
+WORKDIR  /app
 
 COPY . .
 
-RUN cd /var/www/track/public/app && composer update && composer install
+RUN cd /app/app && composer update && composer install
