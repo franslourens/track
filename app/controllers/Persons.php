@@ -112,12 +112,6 @@
         $payload = $this->payload();
         $model = $this->personModel;
         
-        if(!$model->validate($payload))
-        {
-          echo json_encode(array("status" => "failed", "message" => "Please provide all parameters"));
-          exit;
-        }
-        
         if($id)
         {
             try{
@@ -130,6 +124,12 @@
         }
         else
         {
+            if(!$model->validate($payload))
+            {
+              echo json_encode(array("status" => "failed", "message" => "Please provide all parameters"));
+              exit;
+            }
+          
             $person = new Person($payload);
             
             try{
