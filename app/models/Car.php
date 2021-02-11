@@ -10,7 +10,7 @@
   class Car extends BaseModel {
     private $db;
     
-    protected $id;
+    public $id;
     protected $make;
     protected $model;
     protected $color;
