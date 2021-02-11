@@ -11,7 +11,7 @@ data:
     define("DB_NAME", getenv("DB_NAME"));
     define("FRAMEWORK", "/var/www/track/public/app/");
     define('APPROOT', dirname(dirname(__FILE__)));
-    define('URLROOT', 'https://tracking.franslouerns.co.za');
+    define('URLROOT', 'https://tracking.franslourens.co.za');
     define('SITENAME', 'Track');
 --- 
 apiVersion: apps/v1
