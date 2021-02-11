@@ -1,0 +1,430 @@
+{
+	"info": {
+		"_postman_id": "54484af7-1d6b-414d-98e3-2a250e04ed96",
+		"name": "Track",
+		"description": "Tracking people and their cars that come for covid testing and storing their results.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://tracking.franslourens.co.za/persons/",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tracking.franslourens.co.za/persons/",
+					"protocol": "https",
+					"host": [
+						"tracking",
+						"franslourens",
+						"co",
+						"za"
+					],
+					"path": [
+						"persons",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://tracking.franslourens.co.za/persons/show/1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tracking.franslourens.co.za/persons/show/1",
+					"protocol": "https",
+					"host": [
+						"tracking",
+						"franslourens",
+						"co",
+						"za"
+					],
+					"path": [
+						"persons",
+						"show",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://tracking.franslourens.co.za/persons/save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"test\",\n    \"surname\": \"test\",\n    \"phone\": \"0761017046\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tracking.franslourens.co.za/persons/save",
+					"protocol": "https",
+					"host": [
+						"tracking",
+						"franslourens",
+						"co",
+						"za"
+					],
+					"path": [
+						"persons",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://tracking.franslourens.co.za/persons/save/1",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"phone\": \"0761017946\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tracking.franslourens.co.za/persons/save/1",
+					"protocol": "https",
+					"host": [
+						"tracking",
+						"franslourens",
+						"co",
+						"za"
+					],
+					"path": [
+						"persons",
+						"save",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://tracking.franslourens.co.za/persons/destroy/1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tracking.franslourens.co.za/persons/destroy/1",
+					"protocol": "https",
+					"host": [
+						"tracking",
+						"franslourens",
+						"co",
+						"za"
+					],
+					"path": [
+						"persons",
+						"destroy",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://tracking.franslourens.co.za/cars/",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tracking.franslourens.co.za/cars/",
+					"protocol": "https",
+					"host": [
+						"tracking",
+						"franslourens",
+						"co",
+						"za"
+					],
+					"path": [
+						"cars",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://tracking.franslourens.co.za/cars/save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"make\": \"Hondas\",\n    \"model\": \"Ballades\",\n    \"color\": \"black\",\n    \"licence\": \"CL515154\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tracking.franslourens.co.za/cars/save",
+					"protocol": "https",
+					"host": [
+						"tracking",
+						"franslourens",
+						"co",
+						"za"
+					],
+					"path": [
+						"cars",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://tracking.franslourens.co.za/cars/destroy/3",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tracking.franslourens.co.za/cars/destroy/3",
+					"protocol": "https",
+					"host": [
+						"tracking",
+						"franslourens",
+						"co",
+						"za"
+					],
+					"path": [
+						"cars",
+						"destroy",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://tracking.franslourens.co.za/symptoms/",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tracking.franslourens.co.za/symptoms/",
+					"protocol": "https",
+					"host": [
+						"tracking",
+						"franslourens",
+						"co",
+						"za"
+					],
+					"path": [
+						"symptoms",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://tracking.franslourens.co.za/symptoms/save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"fever\",\n    \"severity\": \"less_common\"\n}"
+				},
+				"url": {
+					"raw": "https://tracking.franslourens.co.za/symptoms/save",
+					"protocol": "https",
+					"host": [
+						"tracking",
+						"franslourens",
+						"co",
+						"za"
+					],
+					"path": [
+						"symptoms",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://tracking.franslourens.co.za/symptoms/save/1",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"fever\",\n    \"severity\": \"serious\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tracking.franslourens.co.za/symptoms/save/14",
+					"protocol": "https",
+					"host": [
+						"tracking",
+						"franslourens",
+						"co",
+						"za"
+					],
+					"path": [
+						"symptoms",
+						"save",
+						"14"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://tracking.franslourens.co.za/symptoms/destroy/1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tracking.franslourens.co.za/symptoms/destroy/1",
+					"protocol": "https",
+					"host": [
+						"tracking",
+						"franslourens",
+						"co",
+						"za"
+					],
+					"path": [
+						"symptoms",
+						"destroy",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://tracking.franslourens.co.za/results/",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tracking.franslourens.co.za/results/",
+					"protocol": "https",
+					"host": [
+						"tracking",
+						"franslourens",
+						"co",
+						"za"
+					],
+					"path": [
+						"results",
+						""
+					]
+				},
+				"description": "Showing a list of persons with their symptoms if any and car"
+			},
+			"response": []
+		}
+	]
+}
