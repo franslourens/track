@@ -10,7 +10,12 @@
     public function index() {
       $this->accepts("get");
       
-      $symptoms = $this->symptomModel::collection();
+      $model = $this->symptomModel;
+      $symptoms = $model::collection();
+      
+      if(count($symptoms) == 0) {
+        $model::populate();
+      }
         
       echo json_encode($symptoms);
       exit;
