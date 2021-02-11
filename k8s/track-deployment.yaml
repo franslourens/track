@@ -96,7 +96,7 @@ spec:
               mountPath: /socket
               name: sock
         - 
-          image: frans86/php-tracking:v3
+          image: frans86/php-tracking
           imagePullPolicy: Always
           name: fpm
           volumeMounts: 
