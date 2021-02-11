@@ -139,6 +139,38 @@
 			"response": []
 		},
 		{
+			"name": "https://tracking.franslourens.co.za/persons/cars/1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"person_id\": 1,\n    \"booking_date\": \"2021-10-01\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tracking.franslourens.co.za/persons/cars/1",
+					"protocol": "https",
+					"host": [
+						"tracking",
+						"franslourens",
+						"co",
+						"za"
+					],
+					"path": [
+						"persons",
+						"cars",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "https://tracking.franslourens.co.za/persons/symptoms/1",
 			"request": {
 				"method": "PUT",
