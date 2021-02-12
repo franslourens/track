@@ -6,8 +6,8 @@
    * @version 1.0.0
    * @package Models
    */
-  
   class Car extends BaseModel {
+
     private $db;
     
     public $id;
@@ -41,11 +41,12 @@
       
       foreach($results as $result) {
         
-        $symptoms = Car::symptoms($result->id);
-        
-        $result->popular = Car::popular($result->id);
+        $symptoms = self::symptoms($result->id);
+        $owners = self::owners($result->id);
+      
+        $result->popular = self::popular($result->id, $owners);
         $result->cases = $symptoms;
-        $result->safe = Car::is_safe($symptoms);
+        $result->safe = self::is_safe($symptoms);
         
         $data[] = $result;
       }
@@ -104,9 +105,7 @@
       return count($db->resultset()); 
     }
     
-    public static function popular($id) {
-      $owners = Car::owners($id);
-
+    public static function popular($id, $owners) {
       if($owners > 1) {
         return true;
       }
@@ -114,6 +113,14 @@
       return false;
     }
     
+    /**
+    * ownersPerMonth
+    * 
+    * Calculates the total owners for a car for the month that made a booking for testing for symptoms
+    * 
+    * @param $id int 
+    * @return array
+    **/      
     public static function ownersPerMonth($id) {
       $db = new Database;
       
@@ -130,20 +137,36 @@
     public static function person($id) {
       return Person::retrieveByPk($id);
     }
-    
+ 
+    /**
+    * symptoms
+    * 
+    * Gets all the owners of a car for the month and see how many of them has symptoms of the virus
+    * 
+    * @param id int
+    * @return bool
+    **/      
     public static function symptoms($id) {
-      $ownersPerMonth = Car::ownersPerMonth($id);
+      $ownersPerMonth = self::ownersPerMonth($id);
       
       $data = array();
       
       foreach($ownersPerMonth as $owner) {
-        $person = Car::person($owner->person_id);
+        $person = self::person($owner->person_id);
         $data[$id] = count($person->symptoms());
       }
       
       return count(array_unique($data));      
     }
-    
+
+   /**
+    * is_safe
+    * 
+    * Checks if the car is safe or more likely to have passengers with the virus in it for the current month
+    * 
+    * @param symptoms int
+    * @return bool
+    **/       
     public static function is_safe($symptoms) {
       
       if($symptoms >= 1) {
@@ -155,16 +178,17 @@
     
     public function serialize()
     {
-      $symptoms = Car::symptoms($this->id);
+      $symptoms = self::symptoms($this->id);
+      $owners = self::owners($this->id);
       
       return array("id" => $this->id ? $this->id : $this->db->lastInsertId(),
                    "make" => $this->make,
                    "model" => $this->model,
                    "color" => $this->color,
                    "licence" => $this->licence,
-                   "popular" => $this->popular($this->id),
+                   "popular" => self::popular($this->id, $owners),
                    "cases" => $symptoms,
-                   "safe" => $this->is_safe($symptoms)
+                   "safe" => self::is_safe($symptoms)
                    );
     }
   }

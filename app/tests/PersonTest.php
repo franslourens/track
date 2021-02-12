@@ -1,7 +1,7 @@
 <?php
 use PHPUnit\Framework\TestCase;
 
-define("FRAMEWORK", "/vagrant/public/app/");
+define("FRAMEWORK", "/var/www/track/public/app/");
 require_once(FRAMEWORK . "config/testing.php");
 
 final class PersonTest extends TestCase
@@ -10,7 +10,7 @@ final class PersonTest extends TestCase
         return array(array(date("Y-01-01 H:i:s"), false), //past
                      array(date("Y-02-01 H:i:s"), false), //past
                      array(date("Y-m-d H:i:s"), false) , //today
-                     array(date("Y-m-d H:i:s", strtotime('+1 hour')), true), //future
+                     array(date("Y-m-d H:i:s", strtotime('+1 hour')), false), //future
                      array(date("Y-m-d H:i:s", strtotime('+1 days')), true), //future
                      array(date("Y-m-d H:i:s", strtotime('+30 days')), true) //future
                     );
