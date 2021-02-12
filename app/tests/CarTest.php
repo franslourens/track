@@ -1,7 +1,9 @@
 <?php
 use PHPUnit\Framework\TestCase;
 
-define("FRAMEWORK", "/var/www/track/public/app/");
+$app = dirname(__DIR__, 1);
+
+define("FRAMEWORK", $app . "/");
 require_once(FRAMEWORK . "config/testing.php");
 
 final class CarTest extends TestCase
