@@ -11,8 +11,8 @@
     public function index(){
         $this->accepts("get");
         
-        $persons = $this->carModel::collection();
-        echo json_encode($persons);
+        $cars = $this->carModel::collection();
+        echo json_encode($cars);
         exit;
     }
     
