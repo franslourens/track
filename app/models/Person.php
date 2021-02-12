@@ -90,7 +90,7 @@
       $db->query("SELECT * FROM person_symptom JOIN person ON person_symptom.person_id = person.id JOIN person_car ON person.id = person_car.person_id;");
 
       $results = $db->resultset();
-      
+
       $data = array();
       
       foreach($results as $result) {
@@ -98,7 +98,7 @@
         $data[] = $person->serialize();
       }
 
-      return $data;
+      return array_unique($data);
     }
   
     public static function retrieveByPk($id) {
